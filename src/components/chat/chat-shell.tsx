@@ -430,15 +430,28 @@ export default function ChatShell({
                 </div>
               ) : null}
 
-              <textarea
-                ref={inputRef}
-                value={input}
-                onChange={(event) => setInput(event.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Type your question or paste the problem… (Enter to send, Shift+Enter for new line)"
-                rows={3}
-                className="w-full resize-none rounded-[1.25rem] border border-slate-900/10 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-amber-400 focus:bg-white"
-              />
+              <div className="overflow-hidden rounded-[1.25rem] border border-slate-900/10 bg-slate-50 transition focus-within:border-amber-400 focus-within:bg-white">
+                {input.trim() ? (
+                  <div className="border-b border-slate-900/8 px-4 py-3">
+                    <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      Live preview
+                    </p>
+                    <div className="max-h-56 overflow-y-auto text-sm leading-6 text-slate-900">
+                      <RenderedMessage content={input} tone="assistant" />
+                    </div>
+                  </div>
+                ) : null}
+
+                <textarea
+                  ref={inputRef}
+                  value={input}
+                  onChange={(event) => setInput(event.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Type your question or paste the problem… (Enter to send, Shift+Enter for new line)"
+                  rows={input.trim() ? 4 : 3}
+                  className="w-full resize-none bg-transparent px-4 py-3 text-sm leading-6 text-slate-900 outline-none placeholder:text-slate-400"
+                />
+              </div>
 
               <div className="flex items-center justify-between gap-3">
                 <p className="text-xs text-slate-400">
