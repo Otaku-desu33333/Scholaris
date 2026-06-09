@@ -11,7 +11,6 @@ Scholaris is an educational AI tutor built with Next.js. It helps students work 
 
 ## Features
 
-- Landing page at `/`
 - Tutor chat at `/chat`
 - Toggleable math tools for quick input
 - KaTeX math rendering for student and tutor messages
@@ -46,7 +45,7 @@ AI_MODEL=openrouter/auto
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) and visit `/chat`.
+4. Open [http://localhost:3000](http://localhost:3000). It redirects to `/chat`.
 
 ## Math Input
 
